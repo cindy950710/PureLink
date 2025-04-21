@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pure Link Tools</title>
+<style>
+  body {
+    width: 350px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  .button-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  button {
+    padding: 8px 12px;
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    min-width: 100px;
+  }
+  button:hover {
+    background-color: #3367d6;
+  }
+  .status {
+    margin-top: 10px;
+    padding: 8px;
+    border-radius: 4px;
+    display: none;
+  }
+  .success {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  .error {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  textarea {
+    width: 100%;
+    height: 60px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+  }
+  #qrcode-container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .settings-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f1f3f4;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  .settings-link:hover {
+    background-color: #e8eaed;
+  }
+  .settings-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .info-text {
+    font-size: 14px;
+    color: #5f6368;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    border-left: 4px solid #4285f4;
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h2 id="title">Pure Link Tools</h2>
+  <a href="settings.html" class="settings-link" title="Settings">
+    <svg class="settings-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"></circle>
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+    </svg>
+  </a>
+</div>
+<div class="container">
+  <div class="info-text" id="infoText">
+    Links are automatically cleaned based on their type.
+  </div>
+  
+  <div class="checkbox-group">
+    <input type="checkbox" id="cleanAll">
+    <label for="cleanAll" id="labelAll">Clean All Parameters</label>
+  </div>
+  
+  <div class="input-group">
+    <label for="processedUrl" id="labelProcessed">Processed Link:</label>
+    <textarea id="processedUrl" readonly></textarea>
+  </div>
+  
+  <div class="button-group">
+    <button id="processBtn">Process Link</button>
+    <button id="copyBtn">Copy Link</button>
+    <button id="applyBtn">Apply Link</button>
+  </div>
+
+  <div id="qrcode-container" style="margin-top: 15px; text-align: center;">
+    <div id="qrcode" style="display: inline-block;"></div>
+  </div>
+</div>
+<div id="status" class="status"></div>
+<script src="qrcode.min.js"></script>
+<script src="translations.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
+
