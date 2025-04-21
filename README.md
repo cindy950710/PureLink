@@ -1,30 +1,94 @@
-# Chrome Extension：Pure Link Tools
+# Pure Link Tools
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+<p align="center">
+  <img src="icons/icon128.png" alt="Pure Link Tools Logo" width="128" height="128">
+</p>
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/cindy950710s-projects/v0-chrome-extension-pure-link-tools)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/Q8hD4bdU4ZY)
+A Chrome extension that cleans and simplifies URLs by removing unnecessary tracking parameters and simplifying shopping links from various platforms.
 
-## Overview
+## Translations / 多語言文檔 / 多言語ドキュメント
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+- [English (Current)](README.md)
+- [繁體中文](doc/README.zh-TW.md)
+- [日本語](doc/README.ja.md)
 
-## Deployment
+## Features
 
-Your project is live at:
+Pure Link Tools automatically detects and cleans links from various shopping platforms and removes tracking parameters to create cleaner, more shareable URLs.
 
-**[https://vercel.com/cindy950710s-projects/v0-chrome-extension-pure-link-tools](https://vercel.com/cindy950710s-projects/v0-chrome-extension-pure-link-tools)**
+### Supported Shopping Platforms
 
-## Build your app
+- **Taobao & Tmall**: Removes promotional parameters while preserving the essential product ID
+- **Shopee**: Simplifies links across all regional domains (TW, SG, MY, etc.) while maintaining product identification
+- **Yahoo Shopping**: Simplifies Yahoo Shopping links by keeping only the essential product ID
+- **Rakuten Taiwan**: Removes tracking parameters (scid, srsltid) from Rakuten Taiwan shopping links
+- **Rakuten Japan**: Removes tracking parameters (iasid) from Rakuten Japan shopping links
+- **PcHome**: Removes tracking parameters (srsltid) from PcHome shopping links
 
-Continue building your app on:
+### Tracking Parameter Removal
 
-**[https://v0.dev/chat/projects/Q8hD4bdU4ZY](https://v0.dev/chat/projects/Q8hD4bdU4ZY)**
+Automatically removes common tracking parameters including:
+- Google Analytics parameters (utm_source, utm_medium, utm_campaign, etc.)
+- Facebook tracking parameters (fbclid, fb_action_ids, etc.)
+- Other common tracking parameters (ref, source, campaign, etc.)
 
-## How It Works
+### Additional Features
 
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+- **QR Code Generation**: Automatically creates a scannable QR code for your cleaned link
+- **Clean All Parameters**: Option to remove all URL parameters for maximum simplicity
+- **Multi-language Support**: Available in English, Traditional Chinese, Simplified Chinese, Korean, and Japanese
+- **Copy & Apply**: Easily copy the cleaned link or apply it directly to your current tab
+
+## Installation
+
+### From Chrome Web Store
+
+1. Visit the [Chrome Web Store](https://chrome.google.com/webstore/detail/pure-link-tools/your-extension-id)
+2. Click "Add to Chrome"
+3. Confirm the installation when prompted
+
+### Manual Installation (Developer Mode)
+
+1. Download or clone this repository
+2. Open Chrome and navigate to `chrome://extensions/`
+3. Enable "Developer mode" in the top-right corner
+4. Click "Load unpacked" and select the extension directory
+5. The extension should now be installed and visible in your toolbar
+
+## Usage
+
+1. Navigate to any webpage with a URL you want to clean
+2. Click the Pure Link Tools icon in your Chrome toolbar
+3. The extension will automatically detect and clean the URL based on its type
+4. Use the "Copy Link" button to copy the cleaned URL to your clipboard
+5. Use the "Apply Link" button to navigate to the cleaned URL
+6. Scan the QR code to share the cleaned link with mobile devices
+
+### Settings
+
+Access the settings page by clicking the gear icon in the top-right corner of the extension popup:
+
+- **Language**: Choose from English, Traditional Chinese, Simplified Chinese, Korean, or Japanese
+- **Features**: View detailed descriptions of all available features
+
+## Privacy
+
+Pure Link Tools respects your privacy:
+
+- All URL processing happens locally in your browser
+- No data is sent to any external servers
+- No user tracking or analytics
+- No personal data collection
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Acknowledgements
+
+- Icons made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
+- QR code generation powered by [QRCode.js](https://github.com/davidshimjs/qrcodejs)

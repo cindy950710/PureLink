@@ -12,4 +12,3 @@ if (typeof chrome !== "undefined" && chrome.runtime) {
 } else {
   console.warn("Chrome runtime environment not detected.")
 }
-

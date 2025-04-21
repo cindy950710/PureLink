@@ -214,4 +214,3 @@ function get_browser_language() {
 // 將函數暴露給全局作用域，以便其他腳本可以使用
 window.get_text = get_text
 window.get_browser_language = get_browser_language
-
